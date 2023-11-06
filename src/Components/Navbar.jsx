@@ -8,7 +8,7 @@ const Navbar = () => {
         <li className="text-lg mr-8">
             <NavLink to='/' 
              className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold underline" : "text-[#054efa]"
+             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
            }
             >
                 Home
@@ -18,7 +18,7 @@ const Navbar = () => {
         <li className="text-lg mr-8">
             <NavLink to='/alljobs' 
              className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold underline" : "text-[#054efa]"
+             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
            }
             >
                 All Jobs
@@ -28,7 +28,7 @@ const Navbar = () => {
         <li className="text-lg mr-8">
             <NavLink to='/appliedjobs' 
              className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold underline" : "text-[#054efa]"
+             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
            }
             >
                 Applied Jobs
@@ -38,7 +38,7 @@ const Navbar = () => {
         <li className="text-lg mr-8">
             <NavLink to='/addjob' 
              className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold underline" : "text-[#054efa]"
+             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
            }
             >
                 Add A Job
@@ -48,7 +48,7 @@ const Navbar = () => {
         <li className="text-lg mr-8">
             <NavLink to='/myjobs' 
              className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold underline" : "text-[#054efa]"
+             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
            }
             >
                 My Jobs
@@ -58,7 +58,7 @@ const Navbar = () => {
         <li className="text-lg">
             <NavLink to='/blogs' 
              className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold underline" : "text-[#054efa]"
+             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
            }
             >
                 Blogs
