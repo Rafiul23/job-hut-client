@@ -124,7 +124,10 @@ const Register = () => {
                             </div>
                             <div className="mt-3">
                                 {
-                                    success ? <p className="text-green-500 bg-white p-2 rounded-lg font-bold">{success}</p> : <p className="text-red-500 bg-white p-2 rounded-lg font-bold">{error}</p>
+                                    success && <p className="text-green-500 bg-white p-2 rounded-lg font-bold">{success}</p> 
+                                }
+                                {
+                                    error && <p className="text-red-500 bg-white p-2 rounded-lg font-bold">{error}</p>
                                 }
                             </div>
                             <div className="form-control mt-6">
