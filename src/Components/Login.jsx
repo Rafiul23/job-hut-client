@@ -2,6 +2,16 @@ import { Link } from "react-router-dom";
 
 
 const Login = () => {
+
+    const handleLogin = e =>{
+        e.prevenntDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(email, password);
+    }
+
     return (
         <div className="hero min-h-screen bg-[#9eb9f8]">
             <div className="hero-content flex-col lg:flex-row">
@@ -10,7 +20,7 @@ const Login = () => {
                     <p className="py-6 font-bold">To get full advantage from our website, you have to login first.</p>
                 </div>
                 <div className="card flex-shrink-0  w-1/2 shadow-2xl bg-base-100">
-                    <form className="card-body">
+                    <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
