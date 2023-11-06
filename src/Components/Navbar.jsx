@@ -1,65 +1,75 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 
 const Navbar = () => {
 
+    const { user, logOut, name, photo } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
     const navlinks = <>
 
         <li className="text-lg mr-8">
-            <NavLink to='/' 
-             className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
-           }
+            <NavLink to='/'
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
+                }
             >
                 Home
             </NavLink>
         </li>
 
         <li className="text-lg mr-8">
-            <NavLink to='/alljobs' 
-             className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
-           }
+            <NavLink to='/alljobs'
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
+                }
             >
                 All Jobs
             </NavLink>
         </li>
 
         <li className="text-lg mr-8">
-            <NavLink to='/appliedjobs' 
-             className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
-           }
+            <NavLink to='/appliedjobs'
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
+                }
             >
                 Applied Jobs
             </NavLink>
         </li>
 
         <li className="text-lg mr-8">
-            <NavLink to='/addjob' 
-             className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
-           }
+            <NavLink to='/addjob'
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
+                }
             >
                 Add A Job
             </NavLink>
         </li>
 
         <li className="text-lg mr-8">
-            <NavLink to='/myjobs' 
-             className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
-           }
+            <NavLink to='/myjobs'
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
+                }
             >
                 My Jobs
             </NavLink>
         </li>
 
         <li className="text-lg">
-            <NavLink to='/blogs' 
-             className={({ isActive, isPending }) =>
-             isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
-           }
+            <NavLink to='/blogs'
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-[#054efa] font-bold border-b-2 border-[#054efa] pb-4" : "text-[#054efa]"
+                }
             >
                 Blogs
             </NavLink>
@@ -80,24 +90,36 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
-                        {navlinks}
+                            {navlinks}
 
                         </ul>
                     </div>
 
-                <div className=" hidden lg:flex">
-                    <ul className="flex px-1">
+                    <div className=" hidden lg:flex">
+                        <ul className="flex px-1">
 
-                    {navlinks}
+                            {navlinks}
 
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
                 </div>
                 <div className="navbar-end">
+                    {
+                        user && <img className="rounded-full w-8 h-8 md:w-10 mr-3 md:h-10" src={user?.photoURL} />
+                    }
+
+                    {
+                        user && <p className="text-[#045efa] text-sm md:text-lg mr-3 font-bold">{user?.displayName}</p>
+                    }
                     <button className="btn btn-outline text-[#054efa] border-[#054efa] hover:bg-[#054efa]">
-                      <Link to='/login'>
-                      Login
-                      </Link>  
+                        {
+                            user ? <Link onClick={handleLogOut}
+                               
+                            >LogOut</Link> :
+                                <Link to='/login'
+                                   
+                                >Login</Link>
+                        }
                     </button>
                 </div>
             </div>

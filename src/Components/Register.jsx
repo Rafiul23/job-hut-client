@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import registerPic from '../assets/register.jpg';
 import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
+import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
     const { signInWithGoogle, setUser, createUser } = useContext(AuthContext);
@@ -17,9 +18,9 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const photoURL = form.photoURL.value;
+        const photo = form.photoURL.value;
 
-        console.log(name, email, password, photoURL);
+        console.log(name, email, password, photo);
 
         form.name.value = '';
         form.email.value = '';
@@ -63,6 +64,23 @@ const Register = () => {
 
             })
 
+
+
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const loggedInUser = result.user;
+                setUser(loggedInUser);
+                setSuccess('Google Signin Successful!');
+
+                console.log(loggedInUser);
+
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
@@ -104,13 +122,28 @@ const Register = () => {
                                 </label>
                                 <input type="text" placeholder="photo URL" name="photoURL" className="input input-bordered" required />
                             </div>
+                            <div className="mt-3">
+                                {
+                                    success ? <p className="text-green-500 bg-white p-2 rounded-lg font-bold">{success}</p> : <p className="text-red-500 bg-white p-2 rounded-lg font-bold">{error}</p>
+                                }
+                            </div>
                             <div className="form-control mt-6">
-                                <button className="btn bg-[#054efa] text-white">Login</button>
+                                <button className="btn bg-[#054efa] text-white">Register</button>
                                 <p className="mt-4">Already have an account? Please <Link to='/login' className="text-[#054efa] font-bold">Login</Link></p>
                             </div>
                         </form>
+
+
                     </div>
+
+
                 </div>
+
+            </div>
+            <p className="text-xl my-3 text-center text-blue-700">Or</p>
+
+            <div className="text-center py-4">
+                <button onClick={handleGoogleSignIn} className="btn mb-3 mt-4"><FcGoogle></FcGoogle>Login with Google</button>
             </div>
         </div>
     );
