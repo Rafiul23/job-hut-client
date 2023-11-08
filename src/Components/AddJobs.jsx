@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const AddJobs = () => {
@@ -49,11 +50,11 @@ const AddJobs = () => {
         .then(res => res.json())
         .then(data => {
             if(data.insertedId){
-                alert('New job added successfully');
+                toast.success('New job added successfully');
             }
         })
         .catch(error => {
-            console.log(error.message);
+            toast.error(error.message);
         })
     }
 

@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const UpdateJobData = () => {
@@ -53,11 +55,11 @@ const UpdateJobData = () => {
         .then(res => res.json())
         .then(data => {
             if(data.modifiedCount > 0){
-                alert(' job updated successfully');
+                toast.success(' job updated successfully');
             }
         })
         .catch(error => {
-            console.log(error.message);
+            toast.error(error.message);
         })
     }
 

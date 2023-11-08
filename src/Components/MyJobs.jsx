@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import axios from "axios";
 import MyJobTable from './MyJobTable';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const MyJobs = () => {
@@ -33,7 +35,7 @@ const MyJobs = () => {
         .then(res => res.json())
         .then(data => {
             if(data.deletedCount > 0){
-                alert('job deleted successfully')
+                toast.success('job deleted successfully')
                 const remaining = jobs.filter(job => job._id !== _id);
                 setJobs(remaining);
             }
