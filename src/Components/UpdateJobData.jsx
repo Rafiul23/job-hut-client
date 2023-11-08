@@ -1,8 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
+import { useLoaderData } from "react-router-dom";
 
 
 const UpdateJobData = () => {
+
+    const job = useLoaderData();
+
+    const { job_title, salary_range, job_posting_date, _id,application_deadline, job_banner, job_category, job_description, job_applicants_number, employee_name } = job;
 
     const {user} = useContext(AuthContext);
 
@@ -23,8 +28,8 @@ const UpdateJobData = () => {
         const application_deadline = form.deadline.value;
         const job_applicants_number = form.applicantNumber.value;
 
-        const newJob = {
-             email,
+        const updateJob = {
+             
              job_banner, 
              job_title, 
              employee_name, 
@@ -36,19 +41,19 @@ const UpdateJobData = () => {
              job_applicants_number 
         }
 
-        console.log(newJob);
+    
 
-        fetch('http://localhost:5000/jobs', {
-            method: 'POST',
+        fetch(`http://localhost:5000/job/${_id}`, {
+            method: 'PUT',
             headers: {
               "content-type": "application/json"
             },
-            body: JSON.stringify(newJob)
+            body: JSON.stringify(updateJob)
         })
         .then(res => res.json())
         .then(data => {
             if(data.modifiedCount > 0){
-                alert('New job added successfully');
+                alert(' job updated successfully');
             }
         })
         .catch(error => {
@@ -67,13 +72,13 @@ const UpdateJobData = () => {
                     <label className="label">
                         <span className="label-text">Banner Picture</span>
                     </label>
-                    <input type="text" name="bannerPic" placeholder="Type url for banner picture" className="input input-bordered" required />
+                    <input type="text" defaultValue={job_banner} name="bannerPic" placeholder="Type url for banner picture" className="input input-bordered" required />
                 </div>
                 <div className="form-control w-full md:w-1/2">
                     <label className="label">
                         <span className="label-text">Job Title</span>
                     </label>
-                    <input type="text" name="jobTitle" placeholder="Job Title" className="input input-bordered" required />
+                    <input type="text" defaultValue={job_title} name="jobTitle" placeholder="Job Title" className="input input-bordered" required />
                 </div>
                </div>
                {/* username and job category */}
@@ -82,13 +87,13 @@ const UpdateJobData = () => {
                     <label className="label">
                         <span className="label-text">Username</span>
                     </label>
-                    <input type="text" name="employeeName" placeholder="Username" className="input input-bordered" required />
+                    <input type="text" defaultValue={employee_name} name="employeeName" placeholder="Username" className="input input-bordered" required />
                 </div>
                 <div className="form-control w-full md:w-1/2">
                     <label className="label">
                         <span className="label-text">Job Category</span>
                     </label>
-                    <input type="text" name="jobCategory" placeholder="Job Category" className="input input-bordered" required />
+                    <input type="text" defaultValue={job_category} name="jobCategory" placeholder="Job Category" className="input input-bordered" required />
                 </div>
                </div>
                {/* salary range and job description */}
@@ -97,13 +102,13 @@ const UpdateJobData = () => {
                     <label className="label">
                         <span className="label-text">Salary Range</span>
                     </label>
-                    <input type='text' name="salaryRange" placeholder="Salary Range" className="input input-bordered" required />
+                    <input type='text' defaultValue={salary_range} name="salaryRange" placeholder="Salary Range" className="input input-bordered" required />
                 </div>
                 <div className="form-control w-full md:w-1/2">
                     <label className="label">
                         <span className="label-text">Job Description</span>
                     </label>
-                    <input type="text" name="description" placeholder="Job Description" className="input input-bordered" required />
+                    <input type="text" defaultValue={job_description} name="description" placeholder="Job Description" className="input input-bordered" required />
                 </div>
                </div>
                {/* post date and deadline */}
@@ -112,13 +117,13 @@ const UpdateJobData = () => {
                     <label className="label">
                         <span className="label-text">Job Post Date</span>
                     </label>
-                    <input type="date" name="postedDate" placeholder="Job Post Date" className="input input-bordered" required />
+                    <input type="date" defaultValue={job_posting_date} name="postedDate" placeholder="Job Post Date" className="input input-bordered" required />
                 </div>
                 <div className="form-control w-full md:w-1/2">
                     <label className="label">
                         <span className="label-text">Application Deadline</span>
                     </label>
-                    <input type="date" name="deadline" placeholder="Application Deadline" className="input input-bordered" required />
+                    <input type="date" defaultValue={application_deadline} name="deadline" placeholder="Application Deadline" className="input input-bordered" required />
                 </div>
                </div>
                {/* Applicants number */}
@@ -127,12 +132,12 @@ const UpdateJobData = () => {
                     <label className="label">
                         <span className="label-text">Job Applicants Number</span>
                     </label>
-                    <input type="number" placeholder="Job Applicants Number" name='applicantNumber' className="input input-bordered" required />
+                    <input type="number" defaultValue={job_applicants_number} placeholder="Job Applicants Number" name='applicantNumber' className="input input-bordered" required />
                 </div>
                
                </div>
                 <div className="form-control mt-6">
-                    <button className="btn bg-[#045efa] text-white">Add Job</button>
+                    <button className="btn bg-[#045efa] text-white">Update Job</button>
                 </div>
             </form>
         </div>
