@@ -3,6 +3,8 @@ import registerPic from '../assets/register.jpg';
 import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import { FcGoogle } from 'react-icons/fc';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const { signInWithGoogle, setUser, createUser } = useContext(AuthContext);
@@ -51,16 +53,16 @@ const Register = () => {
                     photoURL: photo
                 })
                     .then(() => {
-                        console.log('profile updated');
+                        toast.success('profile updated');
                     })
                     .catch((error) => {
-                        console.log(error.message);
+                        toast.error(error.message);
                     })
                 navigate(location?.state ? location.state : "/")
 
             })
             .catch(error => {
-                console.log(error.message);
+                toast.error(error.message);
 
             })
 

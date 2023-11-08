@@ -20,6 +20,7 @@ import ErrorPage from './Components/ErrorPage';
 import JobDetails from './Components/JobDetails';
 import UpdateJobData from './Components/UpdateJobData';
 import PrivateRoute from './Components/PrivateRoute';
+import { ToastContainer } from 'react-toastify';
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
+      <ToastContainer></ToastContainer>
     </AuthProvider>
   </React.StrictMode>,
 )
