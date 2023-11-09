@@ -1,9 +1,9 @@
 /**
- * Addjobs
- * main
- * Alljobs
- * JobByCategory
- * MyJobs
- * updatejobdata
- * jobDetails 
+ * Addjobs - done
+ * main - done
+ * Alljobs - done
+ * JobByCategory - done
+ * MyJobs - done
+ * updatejobdata - done
+ * jobDetails - done
  **/ 

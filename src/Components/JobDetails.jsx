@@ -26,11 +26,12 @@ const JobDetails = () => {
         const appliedJobs = {
             link,
             email,
-            photo
+            photo,
+            job
         }
 
     
-        fetch('http://localhost:5000/appliedjobs', {
+        fetch('https://job-hut-server-einridv9r-md-rafiul-islams-projects.vercel.app/appliedjobs', {
             method: 'POST',
             headers: {
               "content-type": "application/json"

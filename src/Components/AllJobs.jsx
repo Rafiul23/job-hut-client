@@ -9,7 +9,7 @@ const AllJobs = () => {
     const [result, setResult] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/jobs')
+        axios.get('https://job-hut-server-einridv9r-md-rafiul-islams-projects.vercel.app/jobs')
             .then(res => setJobs(res.data))
     }, [])
 

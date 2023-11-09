@@ -1,8 +1,7 @@
-# React + Vite
+project link: https://dapper-centaur-413cf9.netlify.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<li>This is a job bassed web application</li>
+<li>Here a user have to login with email and password or by google to visit different pages.</li>
+<li>A logged in user can add job, can update a job's details.</li>
+<li>A loggedin user can also apply in a job.</li>
+<li>If a loggedin user wants to delete his posted job , he can do it by clicking the delete button. </li>
