@@ -14,9 +14,7 @@ const MyJobs = () => {
     const [result, setResult] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/myjobs/${email}`, {
-            withCredentials: true
-        })
+        axios.get(`http://localhost:5000/myjobs/${email}`)
             .then(res => setJobs(res.data))
     }, [email])
 
