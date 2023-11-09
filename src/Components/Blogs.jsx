@@ -2,7 +2,7 @@
 
 const Blogs = () => {
     return (
-        <div>
+        <div className="space-y-4">
             <h1 className="text-4xl font-bold">What is an access token and refresh token? How do they work and where should we store them on the client-side?</h1>
 
             <p>Access tokens and refresh tokens are crucial components of the OAuth 2.0 authentication and authorization framework commonly used for securing web and mobile applications. They play a key role in ensuring the security and authentication of users.</p>
