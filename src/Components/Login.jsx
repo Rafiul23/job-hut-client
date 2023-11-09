@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+import axios from "axios";
 
 const Login = () => {
 
@@ -14,18 +15,30 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        form.email.value = '';
-        form.password.value = '';
-
+        
         signIn(email, password)
         .then(result =>{
-            console.log(result.user);
-            navigate(location?.state ? location.state : "/")
+            const loggedInUser = result.user;
+            const user = { email };
+            axios.post('http://localhost:5000/jwt', user, {
+                withCredentials: true
+            })
+            .then(res => {
+                console.log(res.data)
+                if(res.data.success){
+                    navigate(location?.pathname ? location?.pathname : '/')
+                }
+            })
+            
         })
         .catch(error =>{
             console.log(error);
             setError('Invalid email or password.Please try again!');
         })
+
+        form.email.value = '';
+        form.password.value = '';
+
     }
 
     return (
