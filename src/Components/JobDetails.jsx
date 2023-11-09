@@ -31,7 +31,7 @@ const JobDetails = () => {
         }
 
     
-        fetch('https://job-hut-server-einridv9r-md-rafiul-islams-projects.vercel.app/appliedjobs', {
+        fetch('https://job-hut-server.vercel.app/appliedjobs', {
             method: 'POST',
             headers: {
               "content-type": "application/json"

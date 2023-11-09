@@ -40,7 +40,7 @@ const AddJobs = () => {
 
         console.log(newJob);
 
-        fetch('https://job-hut-server-einridv9r-md-rafiul-islams-projects.vercel.app/jobs', {
+        fetch('https://job-hut-server.vercel.app/jobs', {
             method: 'POST',
             headers: {
               "content-type": "application/json"

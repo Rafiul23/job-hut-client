@@ -45,7 +45,7 @@ const UpdateJobData = () => {
 
     
 
-        fetch(`https://job-hut-server-einridv9r-md-rafiul-islams-projects.vercel.app/job/${_id}`, {
+        fetch(`https://job-hut-server.vercel.app/job/${_id}`, {
             method: 'PUT',
             headers: {
               "content-type": "application/json"

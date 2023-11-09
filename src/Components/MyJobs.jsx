@@ -14,7 +14,7 @@ const MyJobs = () => {
     const [result, setResult] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://job-hut-server-einridv9r-md-rafiul-islams-projects.vercel.app/myjobs/${email}`)
+        axios.get(`https://job-hut-server.vercel.app/myjobs/${email}`)
             .then(res => setJobs(res.data))
     }, [email])
 
@@ -29,7 +29,7 @@ const MyJobs = () => {
     }
 
     const handleDelete = _id =>{
-        fetch(`https://job-hut-server-einridv9r-md-rafiul-islams-projects.vercel.app/job/${_id}`, {
+        fetch(`https://job-hut-server.vercel.app/job/${_id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
